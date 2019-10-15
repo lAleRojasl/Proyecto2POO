@@ -1,12 +1,18 @@
 package UI;
 
 import Utility.Utility;
+import com.sun.tools.javac.Main;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public abstract class UIObject {
@@ -45,7 +51,15 @@ public abstract class UIObject {
         assetLabel.addMouseListener(new MouseAdapter()
         {
             public void mouseClicked(MouseEvent e) {
-                mouseListenerAction();
+                try {
+                    mouseListenerAction();
+                } catch (UnsupportedAudioFileException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (LineUnavailableException ex) {
+                    ex.printStackTrace();
+                }
             }
 
             public void mouseEntered(MouseEvent e) {
@@ -53,7 +67,15 @@ public abstract class UIObject {
             }
 
             public void mouseExited(MouseEvent e) {
-                mouseEnteredAction();
+                mouseExitedAction();
+            }
+
+            public void mousePressed(MouseEvent e){
+                mousePressedAction();
+            }
+
+            public void mouseReleased(MouseEvent e){
+                mouseReleasedAction();
             }
         });
     }
@@ -66,6 +88,8 @@ public abstract class UIObject {
         this.assetLabel.setLocation(xPos, yPos);
     }
 
+    protected void changeAssetSize(int xSize, int ySize){ this.assetLabel.setSize(xSize, ySize);}
+
     protected void setAssetImages(int xSize, int ySize){
         BufferedImage nullImage = new BufferedImage(xSize, ySize, BufferedImage.TYPE_INT_ARGB);
         ImageIcon nullIcon = new ImageIcon(nullImage);
@@ -76,6 +100,17 @@ public abstract class UIObject {
             assetImages.add(new ImageIcon(this.assetLocations.get(i)));
         }
     }
+
+    public static synchronized void playSound(final String url) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+        // The wrapper thread is unnecessary, unless it blocks on the
+        // Clip finishing; see comments.
+        InputStream in = new FileInputStream(Utility.deploySFXPaths);
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(in);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+    }
+
 
     public JLabel getAssetLabel(){
         return assetLabel;
@@ -101,12 +136,22 @@ public abstract class UIObject {
         return this.assetLabel.getY();
     }
 
+    public int getXSize(){ return this.assetLabel.getWidth(); }
+
+    public int getYSize(){ return this.assetLabel.getHeight(); }
+
     //Custom listener for each UIObject
-    public abstract void mouseListenerAction();
+    public abstract void mouseListenerAction() throws UnsupportedAudioFileException, IOException, LineUnavailableException;
 
     //Custom listener for each UIObject
     public abstract void mouseEnteredAction();
 
     //Custom listener for each UIObject
     public abstract void mouseExitedAction();
+
+    //Custom listener for each UIObject
+    public abstract void mousePressedAction();
+
+    //Custom listener for each UIObject
+    public abstract void mouseReleasedAction();
 }

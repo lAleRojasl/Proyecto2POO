@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="027fb8a3-3d5d-4601-8be5-7f25621087d8" name="Default Changelist" comment="" />
+    <list default="true" id="027fb8a3-3d5d-4601-8be5-7f25621087d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UIButtons/ShipDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MapS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abilities/canon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abilities/ray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abilities/repair.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/abilities/shield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/board/hit_square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/board/miss_square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ships/carrier.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ships/stalker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ships/voidray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ships/wardog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Abilities/Ability.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Abilities/DeathRay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Abilities/ProtonCannon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Abilities/Repair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Abilities/Shield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Entities/Hangar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Entities/Hangar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Entities/Ship.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Entities/Ship.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/GameLogic/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/GameLogic/GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleVoid$MyDrawPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleVoid$MyDrawPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleVoid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/BattleVoid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/Square.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/UIObject$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/UIObject$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/UI/UIObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/UI/UIObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battlevoid/Utility/Utility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abilities/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UIButtons/Ability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abilities/DeathRay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UIButtons/DeathRay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abilities/ProtonCannon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UIButtons/ProtonCannon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abilities/Repair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UIButtons/Repair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abilities/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UIButtons/Shield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Hangar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Hangar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameLogic/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameLogic/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BattleGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BattleGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BattleVoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BattleVoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/UIObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/UIObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/Utility.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +68,12 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RJgQN6yooF1jsR9A8IXuGBUUNi" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="326" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -122,5 +179,18 @@
       <updated>1569390595792</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,15 +1,14 @@
 package UI;
-import Abilities.DeathRay;
-import Abilities.ProtonCannon;
-import Abilities.Repair;
-import Abilities.Shield;
+import UIButtons.*;
 import Entities.Hangar;
+import Utility.Utility;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class BattleVoid {
 
+    //UI Buttons
     // -----------------------
     // There are 4 abilities
     // Offensive:
@@ -22,6 +21,9 @@ public class BattleVoid {
     public ProtonCannon protonCannon = new ProtonCannon();
     public Repair repair = new Repair();
     public Shield shield = new Shield();
+
+    //Switch ship directions
+    public ShipDirection shipDirection;
 
     public BattleGrid battleGrid;
     public Hangar shipHangar;
@@ -48,8 +50,7 @@ public class BattleVoid {
         Image boardAsset;
 
         MyDrawPanel() {
-            String boardAssetLocation = "assets\\MapS.png";
-            boardAsset = new ImageIcon(boardAssetLocation).getImage();
+            boardAsset = new ImageIcon(Utility.mapPath).getImage();
 
             //Add ability labels to the Screen
             add(deathRay.getAssetLabel());
@@ -62,26 +63,13 @@ public class BattleVoid {
 
             //Create Battle Grid (Matrix of Squares) on the UI
             battleGrid = new BattleGrid(this, shipHangar);
-        }
 
-        /* void placeAllBoats() {
-            boolean boatPlaced;
-            for (int i = 0; i < 4; i++) {
-                boatPlaced = false;
-                while (!boatPlaced) {
-                    try {
-                        boats[i] = new Boat(boatNames[i],
-                                new Position((int) (Math.random() * 10), (int) (Math.random() * 10)),
-                                Math.random() > .5 ? "horizontal" : "vertical");
-                        placeBoat(boatNames[i], Math.random() > .5 ? "horizontal" : "vertical",
-                                new Position((int) (Math.random() * 10), (int) (Math.random() * 10)));
-                        boatPlaced = true;
-                    } catch (Exception ex) {
-                        ex.getStackTrace();
-                    }
-                }
-            }
-        }*/
+            shipHangar.drawShips();
+
+            //UI Buttons
+            shipDirection = new ShipDirection("shipDirection", Utility.shipDirectionPaths, false, 221, 49, 53, 53, shipHangar);
+            add(shipDirection.getAssetLabel());
+        }
 
         @Override
         public void paintComponent(Graphics g) {
