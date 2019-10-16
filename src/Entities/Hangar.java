@@ -64,12 +64,12 @@ public class Hangar {
 
     public void deployShip(int playerNum) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         if(totalShipsDeployed <= 18){
+            p1HangarBay[shipToDeploy].playSound();
             shipToDeploy++;
             totalShipsDeployed++;
             if(shipToDeploy == 9) shipToDeploy = 0;
             if(playerNum == 1){
                 p1HangarBay[shipToDeploy].showImage(1);
-                p1HangarBay[shipToDeploy].playSound();
             }
             else{
                 p2HangarBay[shipToDeploy].showImage(1);
@@ -94,6 +94,19 @@ public class Hangar {
         }
     }
 
+    public void showAllShips(int playerNum){
+        if(playerNum == 1){
+            for (int i = 0; i < 9; i++) {
+                p1HangarBay[i].showImage(1);
+            }
+        }
+        else if(playerNum == 2) {
+            for (int i = 0; i < 9; i++) {
+                p2HangarBay[i].showImage(1);
+            }
+        }
+    }
+
     public int getTotalShipsDeployed(){
         return this.totalShipsDeployed;
     }
@@ -112,6 +125,29 @@ public class Hangar {
         return totalShipsDeployed == 18;
     }
 
+    public boolean allShipsDestroyedForPlayer(int playerNum){
+        boolean allShipsDestroyed = true;
+        if(playerNum == 2){
+            //if at least 1 ship is still standing, return false
+            for (int i = 0; i < 9; i++) {
+                if(!p1HangarBay[i].isDestroyed()){
+                    System.out.println("PLAYER 1 SHIP "+p1HangarBay[i].getName()+" IS STILL ALIVE!");
+                    allShipsDestroyed = false;
+                    break;
+                }
+            }
+        }
+        else if(playerNum == 1) {
+            for (int i = 0; i < 9; i++) {
+                if(!p2HangarBay[i].isDestroyed()){
+                    System.out.println("PLAYER 2 SHIP "+p1HangarBay[i].getName()+" IS STILL ALIVE!");
+                    allShipsDestroyed = false;
+                    break;
+                }
+            }
+        }
+        return allShipsDestroyed;
+    }
 
 
     public Ship buildWardog(boolean horizontal, boolean isVisible, int xLocation, int yLocation){

@@ -68,9 +68,12 @@ public class Ship extends UIObject {
     }
 
     public void takeDamage(){
-        this.hitPoints--;
-        if(this.hitPoints == 0) isDestroyed = true;
-        if(isDestroyed) System.out.println("THE SHIP "+this.getName()+" REACHED 0 HP AND WAS DESTROYED");
+        this.hitPoints -= 1;
+        if(this.hitPoints == 0) this.isDestroyed = true;
+    }
+
+    public boolean isDestroyed(){
+        return this.isDestroyed;
     }
 
     public void repairDamage(){
@@ -78,8 +81,15 @@ public class Ship extends UIObject {
     }
 
     public void playSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        System.out.print("PLAYING SOUND?");
         if(this.size == 1){
-            super.playSound(Utility.deploySFXPaths + "wardog.mp3");
+            super.playSound(Utility.deploySFXPaths + "wardog.wav");
+        }
+        if(this.size == 2 || this.size == 3){
+            super.playSound(Utility.deploySFXPaths + "voidray.wav");
+        }
+        if(this.size == 4){
+            super.playSound(Utility.deploySFXPaths + "carrier.wav");
         }
     }
 

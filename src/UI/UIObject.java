@@ -1,18 +1,14 @@
 package UI;
 
-import Utility.Utility;
-import com.sun.tools.javac.Main;
-
 import javax.sound.sampled.*;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
 public abstract class UIObject {
@@ -102,12 +98,11 @@ public abstract class UIObject {
     }
 
     public static synchronized void playSound(final String url) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-        // The wrapper thread is unnecessary, unless it blocks on the
-        // Clip finishing; see comments.
-        InputStream in = new FileInputStream(Utility.deploySFXPaths);
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(in);
+        InputStream in = new FileInputStream(url);
+        InputStream bufferedIn = new BufferedInputStream(in);
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
         Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
+        clip.open(audioStream);
         clip.start();
     }
 
