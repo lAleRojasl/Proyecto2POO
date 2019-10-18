@@ -2,4 +2,4 @@
 # BattleVoid (BattleShip)
 
 ## Game Over Screen
-![GameOver](GameOver.png)
+![GameOver](GameOver.PNG)
