@@ -3,3 +3,7 @@
 
 ## Game Over Screen
 ![GameOver](GameOver.png)
+
+## Class Diagram
+![ClassDiagram](ClassDiagram.png)
+
