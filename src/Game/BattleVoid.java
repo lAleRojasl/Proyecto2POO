@@ -1,5 +1,7 @@
 package Game;
 import Entities.Hangar;
+import UI.PlayerHighlight;
+import UI.PlayerWins;
 import UI.ShipDirection;
 import Utility.Utility;
 
@@ -12,8 +14,9 @@ public class BattleVoid {
 
     //Switch ship directions
     public ShipDirection shipDirection;
-
+    //Main Game Grid and center of main logic
     public BattleGrid battleGrid;
+    //Factory for all ships of the game
     public Hangar shipHangar;
 
     JFrame frame;

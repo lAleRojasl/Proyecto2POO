@@ -64,7 +64,7 @@ public class Hangar {
 
     public void deployShip(int playerNum) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         if(totalShipsDeployed <= 18){
-            p1HangarBay[shipToDeploy].playSound();
+            p1HangarBay[shipToDeploy].playSound(0);
             shipToDeploy++;
             totalShipsDeployed++;
             if(shipToDeploy == 9) shipToDeploy = 0;
@@ -77,7 +77,6 @@ public class Hangar {
         }
         else {
             shipToDeploy = 0;
-            //hideAllShips(playerNum);
         }
     }
 
@@ -131,7 +130,6 @@ public class Hangar {
             //if at least 1 ship is still standing, return false
             for (int i = 0; i < 9; i++) {
                 if(!p1HangarBay[i].isDestroyed()){
-                    System.out.println("PLAYER 1 SHIP "+p1HangarBay[i].getName()+" IS STILL ALIVE!");
                     allShipsDestroyed = false;
                     break;
                 }
@@ -140,7 +138,6 @@ public class Hangar {
         else if(playerNum == 1) {
             for (int i = 0; i < 9; i++) {
                 if(!p2HangarBay[i].isDestroyed()){
-                    System.out.println("PLAYER 2 SHIP "+p1HangarBay[i].getName()+" IS STILL ALIVE!");
                     allShipsDestroyed = false;
                     break;
                 }

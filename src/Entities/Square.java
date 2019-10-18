@@ -18,9 +18,11 @@ public class Square extends UIObject {
     // Declare variables
     private int rowIndex;
     private int columnIndex;
+    //Reference to the Ship object on this square
     private Ship shipOnSquare;
+    //Reference to the Hangar, which handles the ship arrays for the players
     private Hangar shipHangar;
-    //Reference to parent grid
+    //Reference to parent grid, which handles logical checks that involve multiple squares
     private BattleGrid battleGrid;
     //1 - Inactive, 2 - Hit, 3 - Miss
     private int state;
@@ -60,6 +62,72 @@ public class Square extends UIObject {
 
     public boolean isEmpty(){ if(this.shipOnSquare == null) return true; else return false;}
 
+    public void handleShipPlacement() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (Utility.currentPlayer == this.playerNumber) {
+            Ship shipToDeploy = shipHangar.getShipToDeploy(Utility.currentPlayer);
+            //Make sure ship fits from this position.
+            if (battleGrid.checkShipFits(this.rowIndex, this.columnIndex, shipToDeploy.getSize(), shipToDeploy.isHorizontal())) {
+                //Deploy ship on this position
+                shipHangar.deployShip(Utility.currentPlayer);
+                //And all the adjacent squares where the ship will be (depending on it's size)
+                battleGrid.placeShipOnSquares(this.rowIndex, this.columnIndex, shipToDeploy);
+
+                //Player 1 done deploying all their ships
+                if (shipHangar.getTotalShipsDeployed() == 9) {
+                    System.out.println("P1 ships deployed!");
+                    //Player 1 done, hide ships
+                    shipHangar.hideAllShips(Utility.currentPlayer);
+                    Utility.switchCurrentPlayer();
+                    battleGrid.switchPlayerHighlight(Utility.currentPlayer);
+                    battleGrid.switchPlayerGrid();
+                }
+
+                //Player 2 done deploying all their ships
+                if (shipHangar.allShipsDeployed()) {
+                    System.out.println("P2 ships deployed!");
+                    //Player 2 done, hide ships
+                    shipHangar.hideAllShips(Utility.currentPlayer);
+                    //Back to Player 1 to start playing.
+                    Utility.switchCurrentPlayer();
+                    battleGrid.switchPlayerHighlight(Utility.currentPlayer);
+                }
+            }
+        }
+    }
+
+    public void handlePlayerTurn() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (Utility.currentPlayer != this.playerNumber && state == 1) {
+            //There's a ship on this square, its a Hit!
+            if (!this.isEmpty()) {
+                super.showImage(1);
+                state = 2;
+                shipOnSquare.takeDamage();
+
+                //Ship was destroyed - check if it was the last one
+                if (shipOnSquare.isDestroyed()) {
+                    if (shipHangar.allShipsDestroyedForPlayer(Utility.currentPlayer)) {
+                        battleGrid.finishGame(Utility.currentPlayer);
+                        System.out.println("ALL SHIPS FOR PLAYER DESTROYED!! PLAYER " + Utility.currentPlayer + " WINS!");
+                    }
+                }
+            }
+
+            //The square is empty, its a Miss!
+            else {
+                super.showImage(2);
+                state = 3;
+            }
+
+            if(!shipHangar.allShipsDestroyedForPlayer(Utility.currentPlayer)){
+                //Switch turn to other player
+                Utility.switchCurrentPlayer();
+                battleGrid.switchPlayerGrid();
+                battleGrid.switchPlayerHighlight(Utility.currentPlayer);
+            }
+        }
+    }
+
+
     // -- Parent Method Implementation --
     //Custom mouse listener - Activates whenever a player clicks on a Square on the Grid.
     @Override
@@ -69,65 +137,11 @@ public class Square extends UIObject {
 
         //Players still placing ships
         if (!shipHangar.allShipsDeployed()) {
-            if (Utility.currentPlayer == this.playerNumber) {
-                Ship shipToDeploy = shipHangar.getShipToDeploy(Utility.currentPlayer);
-                //Make sure ship fits from this position.
-                if (battleGrid.checkShipFits(this.rowIndex, this.columnIndex, shipToDeploy.getSize(), shipToDeploy.isHorizontal())) {
-                    //Deploy ship on this position
-                    shipHangar.deployShip(Utility.currentPlayer);
-                    //And all the adjacent squares where the ship will be (depending on it's size)
-                    battleGrid.placeShipOnSquares(this.rowIndex, this.columnIndex, shipToDeploy);
-
-                    //Player 1 done deploying all their ships
-                    if (shipHangar.getTotalShipsDeployed() == 9) {
-                        System.out.println("P1 ships deployed!");
-                        //Player 1 done, hide ships
-                        shipHangar.hideAllShips(Utility.currentPlayer);
-                        Utility.switchCurrentPlayer();
-                        battleGrid.switchPlayerGrid();
-                    }
-
-                    //Player 2 done deploying all their ships
-                    if (shipHangar.allShipsDeployed()) {
-                        System.out.println("P2 ships deployed!");
-                        //Player 2 done, hide ships
-                        shipHangar.hideAllShips(Utility.currentPlayer);
-                        //Back to Player 1 to start playing.
-                        Utility.switchCurrentPlayer();
-                    }
-                }
-            }
+            handleShipPlacement();
         }
         //All ships deployed, lets play.
         //Take turns clicking on each grid, until all ships have been destroyed
-        else {
-            if (Utility.currentPlayer != this.playerNumber && state == 1) {
-                //There's a ship on this square, its a Hit!
-                if (!this.isEmpty()) {
-                    super.showImage(1);
-                    state = 2;
-                    shipOnSquare.takeDamage();
-
-                    //Ship was destroyed - check if it was the last one
-                    if (shipOnSquare.isDestroyed()) {
-                        //System.out.println("THE SHIP "+this.getName()+" WAS DESTROYED");
-                        if (shipHangar.allShipsDestroyedForPlayer(Utility.currentPlayer)) {
-                            battleGrid.finishGame();
-                            System.out.println("ALL SHIPS FOR PLAYER DESTROYED!! PLAYER " + Utility.currentPlayer + " WINS!");
-                        }
-                    }
-                }
-                //The square is empty, its a Miss!
-                else {
-                    super.showImage(2);
-                    state = 3;
-                }
-
-                //Switch turn to other player
-                Utility.switchCurrentPlayer();
-                battleGrid.switchPlayerGrid();
-            }
-        }
+        else handlePlayerTurn();
     }
 
     @Override

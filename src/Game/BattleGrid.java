@@ -3,6 +3,8 @@ package Game;
 import Entities.Hangar;
 import Entities.Ship;
 import Entities.Square;
+import UI.PlayerHighlight;
+import UI.PlayerWins;
 import Utility.Utility;
 
 import javax.swing.*;
@@ -11,9 +13,17 @@ public class BattleGrid {
     private Square[][] player1Grid = new Square[10][10];
     private Square[][] player2Grid = new Square[10][10];
     private Square[][] activePlayerGrid;
+    private PlayerHighlight player1Highlight;
+    private PlayerHighlight player2Highlight;
+    private PlayerWins playerWins;
     private boolean gameOver = false;
 
     public BattleGrid(JPanel jPanel, Hangar shipHangar) {
+        //Shows on the UI when a player wins
+        playerWins = new PlayerWins("Player Won", Utility.playerWinsPaths, false, 540, 191, 1, 1);
+        jPanel.add(playerWins.getAssetLabel());
+
+        //Main Grids
         int newXPos = 26;
         int newYPos = 123;
         int p2Offset = 762;
@@ -33,6 +43,11 @@ public class BattleGrid {
         }
         //For simplicity we will use a reference to the grids to switch between them.
         activePlayerGrid = player1Grid;
+        //Shows on the UI which player is currently playing
+        player1Highlight = new PlayerHighlight("Player1Highlight", Utility.player1HighlightPaths, true, 46, 61, 135, 24);
+        player2Highlight = new PlayerHighlight("Player2Highlight", Utility.player2HighlightPaths, false, 1271, 62, 143, 24);
+        jPanel.add(player1Highlight.getAssetLabel());
+        jPanel.add(player2Highlight.getAssetLabel());
     }
 
     public boolean checkShipFits(int rowIndex, int columnIndex, int size, boolean horizontal){
@@ -75,12 +90,26 @@ public class BattleGrid {
             this.activePlayerGrid = player1Grid;
     }
 
+    public void switchPlayerHighlight(int playerNum){
+        if(playerNum == 1){
+            player2Highlight.hideImage();
+            player1Highlight.showImage(1);
+        }
+        else{
+            player1Highlight.hideImage();
+            player2Highlight.showImage(1);
+        }
+    }
+
     public boolean gameOver(){
         return this.gameOver;
     }
 
-    public void finishGame(){
+    public void finishGame(int winner){
         this.gameOver = true;
+        //Display Winner message
+        playerWins.changeAssetSize(375, 475);
+        playerWins.showImage(winner);
     }
 
 }

@@ -67,9 +67,19 @@ public class Ship extends UIObject {
         return this.size;
     }
 
-    public void takeDamage(){
+    public void takeDamage() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         this.hitPoints -= 1;
-        if(this.hitPoints == 0) this.isDestroyed = true;
+        if(this.hitPoints == 0) {
+            this.isDestroyed = true;
+            if(this.horizontal)
+                this.showImage(1);
+            else
+                this.showImage(2);
+            this.playSound(2);
+        }
+        else{
+            this.playSound(1);
+        }
     }
 
     public boolean isDestroyed(){
@@ -80,16 +90,26 @@ public class Ship extends UIObject {
         this.hitPoints++;
     }
 
-    public void playSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        System.out.print("PLAYING SOUND?");
-        if(this.size == 1){
-            super.playSound(Utility.deploySFXPaths + "wardog.wav");
-        }
-        if(this.size == 2 || this.size == 3){
-            super.playSound(Utility.deploySFXPaths + "voidray.wav");
-        }
-        if(this.size == 4){
-            super.playSound(Utility.deploySFXPaths + "carrier.wav");
+    public void playSound(int type) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        switch(type){
+            case 0:
+                if(this.size == 1){
+                    super.playSound(Utility.deploySFXPaths + "wardog.wav");
+                }
+                if(this.size == 2 || this.size == 3){
+                    super.playSound(Utility.deploySFXPaths + "voidray.wav");
+                }
+                if(this.size == 4){
+                    super.playSound(Utility.deploySFXPaths + "carrier.wav");
+                }
+                break;
+            case 1:
+                super.playSound(Utility.hitSFXPaths);
+                break;
+            case 2:
+                super.playSound(Utility.destroyedSFXPaths);
+                break;
+
         }
     }
 
