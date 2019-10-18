@@ -93,19 +93,6 @@ public class Hangar {
         }
     }
 
-    public void showAllShips(int playerNum){
-        if(playerNum == 1){
-            for (int i = 0; i < 9; i++) {
-                p1HangarBay[i].showImage(1);
-            }
-        }
-        else if(playerNum == 2) {
-            for (int i = 0; i < 9; i++) {
-                p2HangarBay[i].showImage(1);
-            }
-        }
-    }
-
     public int getTotalShipsDeployed(){
         return this.totalShipsDeployed;
     }

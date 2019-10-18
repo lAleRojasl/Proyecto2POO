@@ -7,15 +7,15 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Utility {
-    public static int squareLen = 65;
-
     public static int currentPlayer = 1;
 
-    //SFX locations
-    public static String deploySFXPaths = "assets\\sound\\deploy\\";
-    public static String destroyedSFXPaths = "assets\\sound\\destroyed.wav";
-    public static String hitSFXPaths = "assets\\sound\\hit.wav";
     public static String mapPath = "assets\\UI\\MapS.png";
+
+    //SFX locations
+    public static String musicSFXPath = "assets\\sound\\music.wav";
+    public static String deploySFXPath = "assets\\sound\\deploy\\";
+    public static String destroyedSFXPath = "assets\\sound\\destroyed.wav";
+    public static String hitSFXPath = "assets\\sound\\hit.wav";
 
     // Ships locations
     public static ArrayList<String> wardogPaths = new ArrayList<>() {
@@ -74,7 +74,6 @@ public class Utility {
             add("assets\\UI\\board\\miss_square.png");
         }
     };
-
 
     public static void switchCurrentPlayer(){
         if(currentPlayer == 1) currentPlayer = 2;

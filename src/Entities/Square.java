@@ -74,7 +74,6 @@ public class Square extends UIObject {
 
                 //Player 1 done deploying all their ships
                 if (shipHangar.getTotalShipsDeployed() == 9) {
-                    System.out.println("P1 ships deployed!");
                     //Player 1 done, hide ships
                     shipHangar.hideAllShips(Utility.currentPlayer);
                     Utility.switchCurrentPlayer();
@@ -84,7 +83,6 @@ public class Square extends UIObject {
 
                 //Player 2 done deploying all their ships
                 if (shipHangar.allShipsDeployed()) {
-                    System.out.println("P2 ships deployed!");
                     //Player 2 done, hide ships
                     shipHangar.hideAllShips(Utility.currentPlayer);
                     //Back to Player 1 to start playing.
@@ -107,7 +105,6 @@ public class Square extends UIObject {
                 if (shipOnSquare.isDestroyed()) {
                     if (shipHangar.allShipsDestroyedForPlayer(Utility.currentPlayer)) {
                         battleGrid.finishGame(Utility.currentPlayer);
-                        System.out.println("ALL SHIPS FOR PLAYER DESTROYED!! PLAYER " + Utility.currentPlayer + " WINS!");
                     }
                 }
             }

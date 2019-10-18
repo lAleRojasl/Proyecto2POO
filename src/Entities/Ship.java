@@ -86,30 +86,25 @@ public class Ship extends UIObject {
         return this.isDestroyed;
     }
 
-    public void repairDamage(){
-        this.hitPoints++;
-    }
-
     public void playSound(int type) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         switch(type){
             case 0:
                 if(this.size == 1){
-                    super.playSound(Utility.deploySFXPaths + "wardog.wav");
+                    super.playSound(Utility.deploySFXPath + "wardog.wav", false);
                 }
                 if(this.size == 2 || this.size == 3){
-                    super.playSound(Utility.deploySFXPaths + "voidray.wav");
+                    super.playSound(Utility.deploySFXPath + "voidray.wav", false);
                 }
                 if(this.size == 4){
-                    super.playSound(Utility.deploySFXPaths + "carrier.wav");
+                    super.playSound(Utility.deploySFXPath + "carrier.wav", false);
                 }
                 break;
             case 1:
-                super.playSound(Utility.hitSFXPaths);
+                super.playSound(Utility.hitSFXPath, false);
                 break;
             case 2:
-                super.playSound(Utility.destroyedSFXPaths);
+                super.playSound(Utility.destroyedSFXPath, false);
                 break;
-
         }
     }
 

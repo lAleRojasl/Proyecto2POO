@@ -1,6 +1,5 @@
 package UI;
 import Entities.Hangar;
-import UI.UIObject;
 import Utility.Utility;
 
 import java.util.ArrayList;

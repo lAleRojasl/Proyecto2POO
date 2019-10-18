@@ -76,10 +76,6 @@ public abstract class UIObject {
         });
     }
 
-    public String getName(){
-        return this.name;
-    }
-
     protected void changeAssetPosition(int xPos, int yPos){
         this.assetLabel.setLocation(xPos, yPos);
     }
@@ -97,22 +93,19 @@ public abstract class UIObject {
         }
     }
 
-    public static synchronized void playSound(final String url) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+    public static synchronized void playSound(final String url, boolean loopIt) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
         InputStream in = new FileInputStream(url);
         InputStream bufferedIn = new BufferedInputStream(in);
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
         clip.start();
+        if(loopIt) clip.loop(5);
     }
 
 
     public JLabel getAssetLabel(){
         return assetLabel;
-    }
-
-    public ImageIcon getAssetImage(int imagePos){
-        return assetImages.get(imagePos);
     }
 
     public void hideImage(){

@@ -7,7 +7,10 @@ import UI.PlayerHighlight;
 import UI.PlayerWins;
 import Utility.Utility;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 
 public class BattleGrid {
     private Square[][] player1Grid = new Square[10][10];
@@ -18,7 +21,7 @@ public class BattleGrid {
     private PlayerWins playerWins;
     private boolean gameOver = false;
 
-    public BattleGrid(JPanel jPanel, Hangar shipHangar) {
+    public BattleGrid(JPanel jPanel, Hangar shipHangar) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         //Shows on the UI when a player wins
         playerWins = new PlayerWins("Player Won", Utility.playerWinsPaths, false, 540, 191, 1, 1);
         jPanel.add(playerWins.getAssetLabel());

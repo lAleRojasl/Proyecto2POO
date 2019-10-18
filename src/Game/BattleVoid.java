@@ -6,6 +6,9 @@ import UI.ShipDirection;
 import Utility.Utility;
 
 import java.awt.*;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 public class BattleVoid {
@@ -21,12 +24,12 @@ public class BattleVoid {
 
     JFrame frame;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         BattleVoid gui = new BattleVoid();
         gui.createUI();
     }
 
-    public void createUI() {
+    public void createUI() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MyDrawPanel drawPanel = new MyDrawPanel();
@@ -40,7 +43,7 @@ public class BattleVoid {
     class MyDrawPanel extends JPanel {
         Image boardAsset;
 
-        MyDrawPanel() {
+        MyDrawPanel() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
             boardAsset = new ImageIcon(Utility.mapPath).getImage();
 
             //Static ships for each player
