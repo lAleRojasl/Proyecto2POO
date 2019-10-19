@@ -12,6 +12,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.io.IOException;
 
+/**********************************************************************
+ Instituto Tecnológico de Costa Rica
+ Programación Orientada a Objetos
+ II Semestre 2019
+ Profesora: Samanta Ramijan Carmiol
+ Estudiantes: Alejandro Rojas Jara, Jose Antonio Güell
+ **********************************************************************/
+
 public class BattleGrid {
     private Square[][] player1Grid = new Square[10][10];
     private Square[][] player2Grid = new Square[10][10];

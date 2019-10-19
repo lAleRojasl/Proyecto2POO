@@ -8,6 +8,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**********************************************************************
+ Instituto Tecnológico de Costa Rica
+ Programación Orientada a Objetos
+ II Semestre 2019
+ Profesora: Samanta Ramijan Carmiol
+ Estudiantes: Alejandro Rojas Jara, Jose Antonio Güell
+ **********************************************************************/
+
 public class Ship extends UIObject {
 
     /*Logic Related Attributes*/

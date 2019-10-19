@@ -11,6 +11,14 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+/**********************************************************************
+ Instituto Tecnológico de Costa Rica
+ Programación Orientada a Objetos
+ II Semestre 2019
+ Profesora: Samanta Ramijan Carmiol
+ Estudiantes: Alejandro Rojas Jara, Jose Antonio Güell
+ **********************************************************************/
+
 public class BattleVoid {
 
     //UI Buttons
